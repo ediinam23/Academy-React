@@ -1,0 +1,47 @@
+.__contact-information{
+    width: 100%;
+    position: relative;
+}
+
+.__contact-information__background{
+    width: 100%;
+}
+
+.__contact-information .__contact-information__indicator{
+    position: absolute;
+    left: 48%;
+    bottom: 72%;
+    transform: translateX(-50%);
+}
+
+.__contact-information .__contact-information__indicator .tooltip{
+    background-color: white;
+    padding: 11px 14px;
+    box-shadow: 0px 18px 30px #0000003D;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.__contact-information .__contact-information__indicator span{
+    font-family: "Gilroy-Regular", sans-serif;
+    display: inline-block;
+    font-size: 22px;
+    line-height: 33px;
+    color: #283E51;
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
+.__contact-information .__contact-information__indicator .dot{
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.__contact-information .__contact-information__information{
+    position: absolute;
+}

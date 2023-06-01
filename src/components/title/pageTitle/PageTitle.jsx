@@ -1,6 +1,6 @@
 import React from "react";
 
-const Title = ({
+const PageTitle = ({
                    text,
                    hello = "Hi"
 }) => {
@@ -10,4 +10,4 @@ const Title = ({
     )
 }
 
-export default Title;
+export default PageTitle;
