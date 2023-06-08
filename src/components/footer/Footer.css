@@ -1,0 +1,22 @@
+.__footer__intro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.__footer__intro p{
+    color: white;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.__footer__intro p:first-child{
+    font-family: "Gilroy-Regular", sans-serif;
+    font-size: 26px;
+}
+
+.__footer__intro p:last-child{
+    font-family: "Gilroy-Bold", sans-serif;
+    font-size: 36px;
+}
