@@ -1,0 +1,80 @@
+.container{
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 45px 0;
+  //max-width: 1082px;
+
+  @media only screen and (max-width: 1024px) {
+    & {
+    }
+  }
+}
+
+.background{
+  background-color: var(--card-background);
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  top: 0;
+  right: 10%;
+  z-index: -1;
+}
+
+.text-content{
+  flex: 1;
+  width: 40%;
+
+  .title{
+    color: var(--text-color);
+    font-size: 46px;
+    line-height: 46px;
+    font-family: "Gilroy-Bold", sans-serif;
+    margin-bottom: 23px;
+    margin-top: 0;
+
+    @media only screen and (max-width: 1024px) {
+      & {
+        margin-top: 42px;
+        margin-bottom: 18px;
+        font-size: 33px;
+        line-height: 33px;
+      }
+    }
+  }
+
+  .description{
+    margin: 0;
+    color: var(--text-color);
+    font-size: 20px;
+    line-height: 33px;
+    font-family: "Gilroy-Regular", sans-serif;
+
+    @media only screen and (max-width: 1024px) {
+      & {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+}
+
+.image-content{
+  flex: 1;
+  width: 60%;
+
+  .image{
+    width: 100%;
+    height: auto;
+
+    @media only screen and (max-width: 1024px) {
+      & {
+        max-width: 80%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+}

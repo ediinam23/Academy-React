@@ -1,3 +1,5 @@
+@import "./assets/styles/colors.scss";
+
 @font-face {
     font-family: "Gilroy-Regular";
     src: url("./assets/fonts/Gilroy-Regular.woff");
@@ -10,7 +12,12 @@
 
 @font-face {
     font-family: "Butler-Light";
-    src: url("./assets/fonts/Gilroy-Bold.woff");
+    src: url("./assets/fonts/Butler_Light.woff");
+}
+
+@font-face {
+    font-family: "Rockness-Regular";
+    src: url("./assets/fonts/Rockness.woff");
 }
 
 .__root-element{

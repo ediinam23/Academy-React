@@ -1,0 +1,13 @@
+.container{
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 46px;
+  color: var(--text-color);
+  text-align: center;
+
+  div{
+    color: var(--accent-color);
+    font-family: "Rockness-Regular", sans-serif;
+    font-size: 65px;
+    line-height: 0;
+  }
+}
