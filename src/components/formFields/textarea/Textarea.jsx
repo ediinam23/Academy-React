@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Input.module.scss";
+import classes from "./Textarea.module.scss";
 
-const Input = ({
+const Textarea = ({
     label = "",
     placeholder = "",
     value = "",
@@ -9,15 +9,15 @@ const Input = ({
                }) => {
     return <div className={classes["container"]}>
         {label && label?.length > 0 && <label>{label}</label>}
-        <input type="text"
-               value={value}
+        <textarea
                placeholder={placeholder}
                onChange={(e) => {
                    onChange(e?.target?.value)
                }
                }
-        />
+               rows="4" cols="50"
+        >{value}</textarea>
     </div>
 }
 
-export default Input;
+export default Textarea;

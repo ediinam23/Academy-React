@@ -52,11 +52,12 @@ function App() {
             ]
         }
     }
-    const [sectionInView, setSectionInView] = useState("services") // administration ili services
+    const [sectionInView, setSectionInView] = useState("administration") // administration ili services
     const [pageData, setPageData] = useState(initialPageData)
 
   return (
       <div className="__root-element">
+          <div className={"__toggle-view-button-container"}>
           <button onClick={() => setSectionInView(prevState => prevState === "administration"
               ? "services"
               : "administration")}> {
@@ -64,7 +65,9 @@ function App() {
                   ? "Go to Services"
                   : "Go to Administration"
           } </button>
-          {sectionInView === "administration" && <Administration/>}
+          </div>
+          {sectionInView === "administration" && <Administration pageData={pageData}
+                                                                 setPageData={setPageData}/>}
           {sectionInView === "services" && <Services pageData={pageData}/>}
       </div>
 

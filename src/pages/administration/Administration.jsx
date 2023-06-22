@@ -1,7 +1,9 @@
 import React from "react";
+import PageTitleAdministration from "./pageTitleAdministration/PageTitleAdministration.jsx";
+import IntroductionAdministration from "./introductionAdministration/IntroductionAdministration.jsx";
 
-const Administration = () => {
-    return <div>
+const Administration = ({pageData, setPageData}) => {
+    return <div style={{paddingTop: "100px"}}>
         Administration
 
             {/*  ProductsAdministration  */}
@@ -17,6 +19,20 @@ const Administration = () => {
                     */}
             {/*  contactUsAdministration  */}
             {/*  InterestingAdministration  */}
+
+        <PageTitleAdministration value={pageData?.pageTitle}
+                                 changeValue={(value) => setPageData(prevState => ({
+                                     ...prevState,
+                                     pageTitle: value
+                                 }))}/>
+        <IntroductionAdministration data={pageData?.introduction}
+                                    changeData={(property, value) => setPageData(prevState => ({
+                                        ...prevState,
+                                        introduction: {
+                                            ...prevState?.introduction,
+                                            [property]: value
+                                        }
+                                    }))} />
     </div>
 }
 
