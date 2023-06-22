@@ -1,0 +1,155 @@
+.nav-container{
+  position: fixed;
+  z-index: 1;
+  top: 35px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 8vw;
+}
+
+.home-link{
+  display: inline-block;
+}
+
+.nav-items-list-container{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  transition: 0.5s max-height ease-in-out;
+
+  @media only screen and (max-width: 1024px) {
+    & {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.open{
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--accent-color);
+        max-height: 500px;
+      }
+    }
+  }
+}
+
+.nav-item{
+  color: var(--nav-item-color);
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 20px;
+  position: relative;
+  padding: 12px 0;
+  margin: 0 25px;
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:before{
+    content: "";
+    width: 80%;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    cursor: pointer;
+  }
+
+  &:hover {
+    &:before {
+      transform: translateX(-50%) scaleX(1);
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    & {
+     font-size: 16px;
+    }
+  }
+}
+
+.language-item{
+  font-family: "Gilroy-Regular", sans-serif;
+  font-size: 18px;
+  color: var(--nav-item-color);
+  border: 1px solid var(--nav-item-color);
+  padding: 12px;
+  text-transform: lowercase;
+}
+
+.menu-button{
+  display: none;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+
+  @media only screen and (max-width: 1024px) {
+    & {
+      display: block;
+    }
+  }
+
+  span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+
+    &:before,
+    &:after{
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-color);
+      position: absolute;
+      transition: transform 0.3s ease;
+    }
+
+    &:before{
+      top: -6px;
+    }
+
+    &:after{
+      top: 6px;
+    }
+  }
+
+  &.open{
+    span{
+      background-color: transparent;
+      &:before {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      &:after {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+    }
+  }
+}

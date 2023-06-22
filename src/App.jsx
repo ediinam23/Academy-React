@@ -4,11 +4,16 @@ import Topic1Image from "./assets/images/Group 1045.svg";
 import ViaProduct from "./assets/images/Group 1098.png";
 import Services from "./pages/services/Services.jsx";
 import Administration from "./pages/administration/Administration.jsx";
-import Input from "./components/formFields/input/Input.jsx";
 
 function App() {
 
     const initialPageData = {
+        pageTitle: "Software development",
+        introduction: {
+            description: "We are one of the few companies which create their own products, and we are proud to mention SHIFT and eTenderi. We make software according to your wishes and needs. Our team of dedicated programmers and IT professionals will create an easy-to-use solution for you, with unique user experience and attractive design. So far we have met the requirements of the following clients: Agency for electronical communications and postal services, Societe Generale bank, Ministry of Economy, Ministry of Justice, Volcano and others.",
+            image: Topic1Image,
+            altText: "Software development"
+        },
         products: {
             title: ["Take a look at", "our products"],
             items: [
@@ -47,7 +52,7 @@ function App() {
             ]
         }
     }
-    const [sectionInView, setSectionInView] = useState("administration") // administration ili services
+    const [sectionInView, setSectionInView] = useState("services") // administration ili services
     const [pageData, setPageData] = useState(initialPageData)
 
   return (

@@ -1,0 +1,38 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 25vw;
+
+  @media only screen and (max-width: 1024px) {
+    & {
+      margin: 30px 13vw;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    & {
+      margin: 30px;
+    }
+  }
+
+  img{
+    width: 100%;
+    height: auto;
+  }
+
+  p{
+    font-family: "Gilroy-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--text-color);
+    padding: 30px;
+
+    @media only screen and (max-width: 700px) {
+      & {
+        padding: 30px 10px;
+        font-size: 16px;
+      }
+    }
+  }
+}

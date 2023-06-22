@@ -11,6 +11,11 @@
 }
 
 @font-face {
+    font-family: "Gilroy-Medium";
+    src: url("./assets/fonts/Gilroy-Medium.woff");
+}
+
+@font-face {
     font-family: "Butler-Light";
     src: url("./assets/fonts/Butler_Light.woff");
 }
@@ -18,6 +23,10 @@
 @font-face {
     font-family: "Rockness-Regular";
     src: url("./assets/fonts/Rockness.woff");
+}
+
+*{
+    box-sizing: border-box;
 }
 
 .__root-element{

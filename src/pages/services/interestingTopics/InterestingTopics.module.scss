@@ -8,4 +8,11 @@
   align-items: center;
   justify-content: center;
   gap: 51px;
+  margin: 0 auto;
+  width: 80%;
+  @media only screen and (max-width: 1024px) {
+    & {
+      width: 100%;
+    }
+  }
 }
