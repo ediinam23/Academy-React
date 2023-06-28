@@ -1,11 +1,56 @@
-import React, {useState} from "react";
+import React, {useReducer, useState} from "react";
 import './App.scss';
 import Topic1Image from "./assets/images/Group 1045.svg";
 import ViaProduct from "./assets/images/Group 1098.png";
 import Services from "./pages/services/Services.jsx";
 import Administration from "./pages/administration/Administration.jsx";
 
+const pageDataReducer = (state, action) => {
+    switch(action.type){
+        case 'page-title':
+            return {
+                ...state,
+                pageTitle: action?.data
+            };
+        case 'introduction':
+            return {
+                ...state,
+                introduction: {
+                    ...state?.introduction,
+                    [action?.property]: action?.data
+                }
+            };
+        case 'products':
+            return {
+                ...state,
+                products: {
+                    ...state?.products,
+                    [action?.property]: action?.data
+                }
+            };
+        case 'contact-us':
+            return {
+                ...state,
+                contactUs: {
+                    ...state?.contactUs,
+                    [action?.property]: action?.data
+                }
+            };
+        case 'interesting':
+            return {
+                ...state,
+                interesting: {
+                    ...state?.interesting,
+                    [action?.property]: action?.data
+                }
+            };
+        default:
+            return state;
+    }
+}
 function App() {
+
+    // dispatch({ type: 'incremented_age' });
 
     const initialPageData = {
         pageTitle: "Software development",
@@ -57,7 +102,8 @@ function App() {
         }
     }
     const [sectionInView, setSectionInView] = useState("administration") // administration ili services
-    const [pageData, setPageData] = useState(initialPageData)
+    // const [pageData, setPageData] = useState(initialPageData)
+    const [pageData, dispatch] = useReducer(pageDataReducer, initialPageData)
 
   return (
       <div className="__root-element">
@@ -71,7 +117,7 @@ function App() {
           } </button>
           </div>
           {sectionInView === "administration" && <Administration pageData={pageData}
-                                                                 setPageData={setPageData}/>}
+                                                                 setPageData={dispatch}/>}
           {sectionInView === "services" && <Services pageData={pageData}/>}
       </div>
 

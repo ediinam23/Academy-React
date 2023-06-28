@@ -10,42 +10,15 @@ const Administration = ({pageData, setPageData}) => {
         <h1>Administration</h1>
 
         <PageTitleAdministration value={pageData?.pageTitle}
-                                 changeValue={(value) => setPageData(prevState => ({
-                                     ...prevState,
-                                     pageTitle: value
-                                 }))}/>
+                                 changeValue={(value) => setPageData({type: 'page-title', data: value})}/>
         <IntroductionAdministration data={pageData?.introduction}
-                                    changeData={(property, value) => setPageData(prevState => ({
-                                        ...prevState,
-                                        introduction: {
-                                            ...prevState?.introduction,
-                                            [property]: value
-                                        }
-                                    }))} />
+                                    changeData={(property, value) => setPageData({type: 'introduction', data: value, property: property})}/>
         <ProductsAdministration  data={pageData?.products}
-                                 changeData={(property, value) => setPageData(prevState => ({
-                                     ...prevState,
-                                     products: {
-                                         ...prevState?.products,
-                                         [property]: value
-                                     }
-                                 }))} />
+                                 changeData={(property, value) => setPageData({type: 'products', data: value, property: property})} />
         <ContactUsAdministration  data={pageData?.contactUs}
-                                 changeData={(property, value) => setPageData(prevState => ({
-                                     ...prevState,
-                                     contactUs: {
-                                         ...prevState?.contactUs,
-                                         [property]: value
-                                     }
-                                 }))} />
+                                  changeData={(property, value) => setPageData({type: 'contact-us', data: value, property: property})} />
         <InterestingAdministration  data={pageData?.interesting}
-                                     changeData={(property, value) => setPageData(prevState => ({
-                                         ...prevState,
-                                         interesting: {
-                                             ...prevState?.interesting,
-                                             [property]: value
-                                         }
-                                     }))} />
+                                    changeData={(property, value) => setPageData({type: 'interesting', data: value, property: property})} />
     </div>
 }
 
