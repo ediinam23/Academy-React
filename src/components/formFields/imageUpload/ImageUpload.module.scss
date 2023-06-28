@@ -18,20 +18,5 @@
     padding: 12px 14px;
     border-radius: 6px;
     border: 1px solid var(--nav-item-color);
-
-    &::-webkit-input-placeholder { /* Edge */
-      color: var(--nav-item-color);
-      font-family: "Gilroy-Regular", sans-serif;
-    }
-
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: var(--nav-item-color);
-      font-family: "Gilroy-Regular", sans-serif;
-    }
-
-    &::placeholder {
-      color: var(--nav-item-color);
-      font-family: "Gilroy-Regular", sans-serif;
-    }
   }
 }

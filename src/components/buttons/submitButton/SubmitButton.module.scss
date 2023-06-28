@@ -1,0 +1,17 @@
+.button{
+  border-radius: 6px;
+  border: 1px solid var(--accent-color);
+  background-color: white;
+  color: var(--accent-color);
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover{
+    background-color: var(--accent-color);
+    color: white;
+  }
+}

@@ -18,6 +18,7 @@ function App() {
             title: ["Take a look at", "our products"],
             items: [
                 {
+                    id: 1,
                     title: "Via",
                     description: "Business travel automatization software.",
                     image: ViaProduct
@@ -32,18 +33,21 @@ function App() {
             title: "You might be interested",
             items: [
                 {
+                    id: 1,
                     title: "Mobile apps development",
                     description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...",
                     alt: "Mobile aps",
                     image: Topic1Image
                 },
                 {
+                    id: 2,
                     title: "Website development",
                     description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...",
                     alt: "Website development",
                     image: Topic1Image
                 },
                 {
+                    id: 3,
                     title: "SaaS",
                     description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...",
                     alt: "SaaS",

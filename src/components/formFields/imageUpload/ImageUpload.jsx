@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./ImageUpload.module.scss"
 
 const ImageUpload = ({label = "", onChange = () => {}}) => {
 
@@ -16,7 +17,7 @@ const ImageUpload = ({label = "", onChange = () => {}}) => {
         }
     }
 
-    return <div>
+    return <div className={classes["container"]}>
         {label && label?.length > 0 && <label>{label}</label>}
         <input type="file"
                onChange={(e) => {
