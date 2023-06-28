@@ -7,26 +7,24 @@ import Introduction from "./introduction/Introduction.jsx";
 import SectionTitle from "../../components/title/sectionTitle/SectionTitle.jsx";
 import classes from "./Services.module.scss";
 import Navigation from "../../components/navigation/Navigation.jsx";
+import {useAppData} from "../../context/AppContext.jsx";
 
-const Services = ({pageData}) => {
+const Services = () => {
+    const {pageData} = useAppData();
+    const {pageTitle} = pageData;
     return <div className={classes['container']}>
         {/*  Navigation  */}
         <Navigation/>
         {/*  PageTitle  */}
-        <SectionTitle title={pageData?.pageTitle} className={classes["page-title"]}/>
+        <SectionTitle title={pageTitle} className={classes["page-title"]}/>
         {/*  Introduction  */}
-        <Introduction description={pageData?.introduction?.description}
-                      image={pageData?.introduction?.image}
-                      altText={pageData?.introduction?.altText}/>
+        <Introduction/>
         {/*  Products  */}
-        <Products title={pageData?.products?.title}
-                  products={pageData?.products?.items}/>
+        <Products/>
         {/*  Contact us  */}
-        <ContactUs title={pageData?.contactUs?.title}
-                   description={pageData?.contactUs?.description}/>
+        <ContactUs/>
         {/*  InterestingTopics  */}
-        <InterestingTopics title={pageData?.interesting?.title}
-                           topics={pageData?.interesting?.items}/>
+        <InterestingTopics />
         {/*  Footer  */}
         <Footer/>
 

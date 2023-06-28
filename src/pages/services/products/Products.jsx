@@ -2,11 +2,13 @@ import React from "react";
 import classes from "./Products.module.scss";
 import ArtiscticTitle from "../../../components/title/artisticTitle/ArtiscticTitle.jsx";
 import ProductCard from "./productCard/ProductCard.jsx";
+import {useAppData} from "../../../context/AppContext.jsx";
 
-const Products = ({
-                      title = [],
-                      products = []
-}) => {
+const Products = () => {
+    const {pageData} = useAppData();
+    const {products: productsSection} = pageData;
+    const {title, items: products} = productsSection;
+
     return <section className={classes['container']}>
         <ArtiscticTitle title={title}/>
         <div className={classes['products-list']}>

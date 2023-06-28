@@ -3,10 +3,14 @@ import Input from "../../../components/formFields/input/Input";
 import SectionWrapper from "../../../components/sectionWrapper/SectionWrapper.jsx";
 import ListAdministration from "../../../components/listAdministration/ListAdministration.jsx";
 import TopicForm from "./topicForm/TopicForm.jsx";
+import {useAppData} from "../../../context/AppContext.jsx";
 
 
 // title, items
-const InterestingAdministration = ({data, changeData}) => {
+const InterestingAdministration = () => {
+    const {pageData, dispatch} = useAppData();
+    const {interesting} = pageData;
+
     const header = [
         {
             title: "Title",
@@ -22,16 +26,20 @@ const InterestingAdministration = ({data, changeData}) => {
         }
     ]
 
+    const handleDispatch = (property, value) => {
+        dispatch({type: 'interesting', data: value, property: property})
+    }
+
     return <SectionWrapper title="Interesting section">
         <Input label="Section title"
                placeholder="Insert title of section"
-               value={data?.title}
-               onChange={(value) => changeData("title", value)}
+               value={interesting?.title}
+               onChange={(value) => handleDispatch("title", value)}
         />
         <ListAdministration title={"Topics list"}
                             header={header}
-                            data={data?.items}
-                            changeData={(value) => changeData("items", value)}
+                            data={interesting?.items}
+                            changeData={(value) => handleDispatch("items", value)}
                             FormComponent={TopicForm}/>
     </SectionWrapper>
 }
