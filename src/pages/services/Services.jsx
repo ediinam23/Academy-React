@@ -8,6 +8,7 @@ import SectionTitle from "../../components/title/sectionTitle/SectionTitle.jsx";
 import classes from "./Services.module.scss";
 import Navigation from "../../components/navigation/Navigation.jsx";
 import {useAppData} from "../../context/AppContext.jsx";
+import pageWrapper from "../pageWrapper/PageWrapperHOC.jsx";
 
 const Services = () => {
     const {pageData} = useAppData();
@@ -31,4 +32,4 @@ const Services = () => {
     </div>
 }
 
-export default Services;
+export default pageWrapper(Services);

@@ -4,6 +4,7 @@ import IntroductionAdministration from "./introductionAdministration/Introductio
 import ProductsAdministration from "./productsAdministration/ProductsAdministration.jsx";
 import ContactUsAdministration from "./contactUsAdministration/ContactUsAdministration.jsx";
 import InterestingAdministration from "./interestingAdministration/InterestingAdministration.jsx";
+import pageWrapper from "../pageWrapper/PageWrapperHOC.jsx";
 
 const Administration = () => {
     return <div style={{paddingTop: "100px", paddingLeft: "16px", paddingRight: "16px"}}>
@@ -17,4 +18,4 @@ const Administration = () => {
     </div>
 }
 
-export default Administration;
+export default pageWrapper(Administration);
