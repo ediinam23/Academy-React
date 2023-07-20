@@ -9,6 +9,7 @@ const pageWrapper = (Component) => {
             <div className={"__toggle-view-button-container"}>
                 <Link to="/administration">Go to administration</Link>
                 <Link to="/">Go to services</Link>
+                <a href={"/administration"}>Go to admin page</a>
             </div>
             <Component {...props}/>
         </div>

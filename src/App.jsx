@@ -7,7 +7,10 @@ import Services from "./pages/services/Services.jsx";
 import Administration from "./pages/administration/Administration.jsx";
 import AppProvider from "./context/AppContext.jsx";
 import './App.scss';
-import PageWrapper from "./pages/pageWrapper/PageWrapper.jsx";
+import TestOutlet from "./pages/testOutlet/TestOutlet.jsx";
+import OutletExample from "./pages/testOutlet/OutletExample.jsx";
+import Product from "./pages/product/Product.jsx";
+import ModalProvider from "./context/ModalContext.jsx";
 
 
 // with page wrapper component
@@ -29,9 +32,27 @@ const router = createBrowserRouter([
         element: <Services/>,
     },
     {
-        path: "administration",
+        path: "/administration",
         element: <Administration />,
     },
+    {
+        path: "/products/:type/:typeID",
+        element: <Product />,
+    },
+    {
+        path: "/messages",
+        element: <TestOutlet/>,
+        children: [
+            {
+                path: "tasks", // /messages/tasks
+                element: <OutletExample />,
+            },
+            {
+                path: "message", // /messages/tasks
+                element: <OutletExample additionalText="You have new message"/>,
+            },
+        ],
+    }
 ]);
 
 function App() {
@@ -39,8 +60,9 @@ function App() {
 
   return (
       <AppProvider>
-          <RouterProvider router={router} />
-
+          <ModalProvider>
+            <RouterProvider router={router} />
+        </ModalProvider>
       </AppProvider>
 
   )
