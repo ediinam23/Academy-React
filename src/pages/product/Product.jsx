@@ -1,6 +1,7 @@
 import React from 'react';
 import pageWrapper from "../pageWrapper/PageWrapperHOC.jsx";
 import {useParams} from "react-router-dom";
+import withAuth from "../authHOC/authHOC.jsx";
 
 const Product = () => {
     const params = useParams();
@@ -12,4 +13,4 @@ const Product = () => {
     </div>
 }
 
-export default pageWrapper(Product)
+export default withAuth(pageWrapper(Product))

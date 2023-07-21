@@ -1,22 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import Table from "../table/Table.jsx";
 import classes from "./ListAdministration.module.scss";
 import AddButton from "../buttons/addButton/AddButton.jsx";
 import Button from "../buttons/button/Button.jsx";
+import {useModal} from "../../context/ModalContext.jsx";
 
 const ListAdministration = ({title, header, data, changeData, FormComponent}) => {
-    const [displayForm, setDisplayForm] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(null);
-
-    const openForm = (data) => {
-        setSelectedItem(data);
-        setDisplayForm(true);
-    }
-
-    const closeForm = () => {
-        setSelectedItem(null);
-        setDisplayForm(false)
-    }
+    const {open, close} = useModal();
 
     const onDataChange = (type, formData) => {
         if(type === "delete"){
@@ -57,23 +47,25 @@ const ListAdministration = ({title, header, data, changeData, FormComponent}) =>
         }
     ]
 
-    return <div className={`${classes["container"]} ${displayForm ? classes["is-form-open"] : ""}`}>
+    const openForm = (data) => {
+        open(title,
+            <FormComponent data={data}
+                           onSubmit={(type, data) => onDataChange(type, data)}/>
+
+        )
+    }
+
+    const closeForm = () => {
+        close();
+    }
+
+    return <div className={`${classes["container"]} `}>
         <h5>{title}</h5>
         <AddButton onClick={openForm}
                     className={classes["add-button"]}/>
         <div>
             <Table header={[...header, ...actionsHeader]}
                    data={data}/>
-            {displayForm &&
-                <div className={classes["form-container"]}>
-                    <Button label={"Close"}
-                            className={classes["close-button"]}
-                            onClick={() => closeForm()}/>
-                    <FormComponent data={selectedItem}
-                                   onSubmit={(type, data) => onDataChange(type, data)}/>
-                </div>
-            }
-
         </div>
     </div>
 }

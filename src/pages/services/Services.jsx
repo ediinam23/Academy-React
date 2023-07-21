@@ -9,6 +9,7 @@ import classes from "./Services.module.scss";
 import Navigation from "../../components/navigation/Navigation.jsx";
 import {useAppData} from "../../context/AppContext.jsx";
 import pageWrapper from "../pageWrapper/PageWrapperHOC.jsx";
+import withAuth from "../authHOC/authHOC.jsx";
 
 const Services = () => {
     const {pageData} = useAppData();
@@ -32,4 +33,4 @@ const Services = () => {
     </div>
 }
 
-export default pageWrapper(Services);
+export default withAuth(pageWrapper(Services));

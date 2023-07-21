@@ -11,6 +11,8 @@ import TestOutlet from "./pages/testOutlet/TestOutlet.jsx";
 import OutletExample from "./pages/testOutlet/OutletExample.jsx";
 import Product from "./pages/product/Product.jsx";
 import ModalProvider from "./context/ModalContext.jsx";
+import UserProvider from "./context/UserContext.jsx";
+import Login from "./pages/login/Login.jsx";
 
 
 // with page wrapper component
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Services/>,
+    },
+    {
+        path: "/login",
+        element: <Login/>,
     },
     {
         path: "/administration",
@@ -59,11 +65,13 @@ function App() {
 
 
   return (
-      <AppProvider>
-          <ModalProvider>
-            <RouterProvider router={router} />
-        </ModalProvider>
-      </AppProvider>
+      <UserProvider>
+          <AppProvider>
+              <ModalProvider>
+                <RouterProvider router={router} />
+            </ModalProvider>
+          </AppProvider>
+      </UserProvider>
 
   )
 }

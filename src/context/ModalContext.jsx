@@ -1,5 +1,5 @@
-import React, {createContext, useContext, useReducer, useState} from "react";
-import { Modal } from 'antd';
+import React, {createContext, useContext, useState} from "react";
+import Modal from "../components/modal/Modal";
 
 
 const ModalContext = createContext();
@@ -8,6 +8,7 @@ const ModalProvider = ({children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [modalData, setModalData] = useState(null); // {title, content}
 
+    //open(modalData) // modalData - objekat
     const open = (title, content) => {
         setModalData({
             title: title,
@@ -21,14 +22,14 @@ const ModalProvider = ({children}) => {
         setModalData(null)
     }
 
-
     return <ModalContext.Provider value={{
         open: (title, content) => open(title, content),
         close: () => close()
     }}>
-        <Modal title={modalData?.title} open={isOpen} onCancel={close}>
-            {modalData?.content}
-        </Modal>
+        <Modal title={modalData?.title}
+               open={isOpen}
+               close={close}
+               content={modalData?.content}/>
         {children}
     </ModalContext.Provider>
 }

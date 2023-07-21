@@ -6,6 +6,7 @@ import ContactUsAdministration from "./contactUsAdministration/ContactUsAdminist
 import InterestingAdministration from "./interestingAdministration/InterestingAdministration.jsx";
 import pageWrapper from "../pageWrapper/PageWrapperHOC.jsx";
 import {useNavigate} from "react-router-dom";
+import withAuth from "../authHOC/authHOC.jsx";
 
 const Administration = () => {
     const navigate = useNavigate();
@@ -27,4 +28,4 @@ const Administration = () => {
     </div>
 }
 
-export default pageWrapper(Administration);
+export default withAuth(pageWrapper(Administration));
