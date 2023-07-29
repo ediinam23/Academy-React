@@ -13,6 +13,9 @@ import Product from "./pages/product/Product.jsx";
 import ModalProvider from "./context/ModalContext.jsx";
 import UserProvider from "./context/UserContext.jsx";
 import Login from "./pages/login/Login.jsx";
+import ValidationTestOne from "./pages/validation/ValidationTestOne.jsx";
+import ValidationTestTwo from "./pages/validation/ValidationTestTwo.jsx";
+import ValidationTestThree from "./pages/validation/ValidationTestThree.jsx";
 
 
 // with page wrapper component
@@ -44,6 +47,18 @@ const router = createBrowserRouter([
     {
         path: "/products/:type/:typeID",
         element: <Product />,
+    },
+    {
+        path: "/react-hook-form-one",
+        element: <ValidationTestOne />,
+    },
+    {
+        path: "/react-hook-form-two",
+        element: <ValidationTestTwo />,
+    },
+    {
+        path: "/react-hook-form-three",
+        element: <ValidationTestThree />,
     },
     {
         path: "/messages",

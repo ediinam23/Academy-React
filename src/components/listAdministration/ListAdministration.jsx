@@ -49,7 +49,7 @@ const ListAdministration = ({title, header, data, changeData, FormComponent}) =>
 
     const openForm = (data) => {
         open(title,
-            <FormComponent data={data}
+            <FormComponent key={JSON.stringify(data)} data={data}
                            onSubmit={(type, data) => onDataChange(type, data)}/>
 
         )

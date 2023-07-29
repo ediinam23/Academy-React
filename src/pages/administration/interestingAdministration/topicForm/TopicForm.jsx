@@ -1,49 +1,73 @@
-import React, {useEffect, useState} from "react";
-import Input from "../../../../components/formFields/input/Input.jsx";
-import ImageUpload from "../../../../components/formFields/imageUpload/ImageUpload.jsx";
-import Textarea from "../../../../components/formFields/textarea/Textarea.jsx";
+import React, {useEffect} from "react";
+import {useForm} from 'react-hook-form';
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import InputWithController from "../../../../components/formFields/inputWithController/InputWithController.jsx";
 import SubmitButton from "../../../../components/buttons/submitButton/SubmitButton.jsx";
 import classes from "./TopicForm.module.scss";
+import TextareaWithController
+    from "../../../../components/formFields/textareaWithController/TextareaWithController.jsx";
+import ImageUploadWithController
+    from "../../../../components/formFields/imageUploadWithController/ImageUploadWithController.jsx";
 
 const TopicForm = ({data, onSubmit}) => {
-    const [formData, setFormData] = useState(null);
+    const schema = yup.object().shape({
+        title: yup.string().trim()
+            .required("Field required!")
+            .min(3, "Minimum length is 3!")
+            .max(50, "Maximum length is 50!"),
+        description: yup.string().trim()
+            .required("Field required!")
+            .min(3, "Minimum length is 3!")
+            .max(255, "Maximum length is 255!"),
+        alt: yup.string().trim()
+            .required("Field required!")
+            .min(3, "Minimum length is 3!")
+            .max(50, "Maximum length is 50!"),
+        image: yup.string().required("Field is required!")
+    })
 
-    const changeProperty = (property, value) => setFormData(prevState => ({
-        ...prevState,
-        [property]: value
-    }))
+    const { handleSubmit, control, reset, formState: {errors}
+    } = useForm({resolver: yupResolver(schema)});
 
-    const onSave = () => {
+    const onSave = (formData) => {
         onSubmit(data?.id ? "edit" : "add", formData)
     }
 
     useEffect(() => {
-        setFormData(data)
+        reset(data)
     }, [JSON.stringify(data)])
 
-    return <form className={classes["form"]}>
+    console.log(errors)
+
+    return <form className={classes["form"]} onSubmit={handleSubmit(onSave)}>
         <h5>{data?.id ? "Edit topic" : "Add topic"}</h5>
-        <Input label="Title"
-               placeholder="Insert title of topic"
-               value={formData?.title}
-               onChange={(value) => changeProperty("title", value)}
+        <InputWithController label="Title"
+                             placeholder="Insert title of topic"
+                             name="title"
+                             control={control}
+                             error={errors?.title?.message}
+
         />
-        <Textarea label="Description"
-                  placeholder="Insert description of topic"
-               value={formData?.description}
-               onChange={(value) => changeProperty("description", value)}
+        <TextareaWithController label="Description"
+                                placeholder="Insert description of topic"
+                                name="description"
+                                control={control}
+                                error={errors?.description?.message}
         />
-        <Input label="Image alt text"
-               placeholder="Insert alternative text for image"
-               value={formData?.alt}
-               onChange={(value) => changeProperty("alt", value)}
+        <InputWithController label="Image alt text"
+                             placeholder="Insert alternative text for image"
+                             name="alt"
+                             control={control}
+                             error={errors?.alt?.message}
         />
-        <ImageUpload label={"Image"}
-                     onChange={(value) => changeProperty("image", value)}
+        <ImageUploadWithController label={"Image"}
+                                   name={"image"}
+                                   control={control}
+                                   error={errors?.image?.message}
         />
         <SubmitButton className={classes["submit-button"]}
-                      label={"Save"}
-                      onClick={() => onSave()}/>
+                      label={"Save"}/>
     </form>
 }
 
