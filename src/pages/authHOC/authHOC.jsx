@@ -6,7 +6,7 @@ const withAuth = (Component) => {
     return (props) => {
         const {userData} = useUserData();
 
-        return true ?
+        return userData?.id ?
             <Component {...props}/>
             :
             <Navigate to="/login" replace={true} />

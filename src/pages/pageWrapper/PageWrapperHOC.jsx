@@ -12,6 +12,7 @@ const pageWrapper = (Component) => {
             <div className={"__toggle-view-button-container"}>
                 <Link to="/administration">Go to administration</Link>
                 <Link to="/">Go to services</Link>
+                <Link to="/task-categories">Task categories</Link>
                 <a href={"/administration"}>Go to admin page</a>
                 <div style={{padding: '0 16px'}}>{userData?.name}</div>
                 <div style={{padding: '0 16px'}} onClick={() => logout()}>Logout</div>

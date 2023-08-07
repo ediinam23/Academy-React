@@ -1,21 +1,29 @@
 import React, {useState} from 'react';
 import Input from "../../components/formFields/input/Input.jsx";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton.jsx";
-import {useUserData} from "../../context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
+import {authService} from "../../services/AuthService.js";
+import {storageService} from "../../services/StorageService.js";
+import {storageKeys} from "../../config/config.js";
+import {useUserData} from "../../context/UserContext.jsx";
 
 const Login = () => {
-    const {login} = useUserData();
     const navigate = useNavigate();
+    const {refreshUserData} = useUserData();
     const [formData, setFormData] = useState({email: "", password: ""});
 
     const onLogin = () => {
-        console.log(formData)
-        const success = login(formData?.email, formData?.password)
-
-        if(success){
-            navigate("/")
-        }
+        authService.login(formData?.email, formData?.password)
+            .then(async r => {
+                storageService.set(storageKeys.USER, r.getToken())
+                await refreshUserData();
+                setTimeout(() => {
+                    navigate('/')
+                }, 300)
+            })
+            .catch(err => {
+                console.log(err?.data)
+            })
     }
 
     return <div>

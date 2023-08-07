@@ -1,4 +1,7 @@
-import React, {createContext, useContext, useState} from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
+import {storageService} from "../services/StorageService.js";
+import {storageKeys} from "../config/config.js";
+import {userService} from "../services/UserService.js";
 
 const users = [
     {
@@ -19,40 +22,41 @@ const UserContext = createContext();
 
 const UserProvider = ({children}) => {
     const [userData, setUserData] = useState(null);
+    const [dataLoaded, setDataLoaded] = useState(false);
 
-    const login = (email, password) => {
-        console.log(email, password)
-        const currentUser = users.find(user => user.email === email);
-        let success = false;
-
-        if(currentUser){
-            console.log("User found")
-            if(currentUser.password === password){
-                console.log("Credentials ok")
-                setUserData(currentUser)
-                success = true;
-            }else{
-                console.log("credentials false")
-                setUserData(null)
-            }
+    const getUser = async () => {
+        setDataLoaded(false)
+        if(storageService.exists(storageKeys.USER)){
+            userService.getCurrentUserData()
+                .then(r => {
+                    setUserData(r)
+                    setDataLoaded(true)
+                })
+                .catch(() => {
+                    setUserData(null)
+                    setDataLoaded(true)
+                })
         }else{
-            console.log("User does not exist")
             setUserData(null)
+            setDataLoaded(true)
         }
-
-        return success;
     }
 
     const logout = () => {
         setUserData(null)
+        storageService.clear()
     }
+
+    useEffect(() => {
+        getUser()
+    }, [])
 
     return <UserContext.Provider value={{
         userData: userData,
-        login: (email, password) => login(email, password),
+        refreshUserData: () => getUser(),
         logout: () => logout()
     }}>
-        {children}
+        {dataLoaded && children}
     </UserContext.Provider>
 }
 

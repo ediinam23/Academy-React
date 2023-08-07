@@ -3,6 +3,7 @@ import {
     createBrowserRouter,
     RouterProvider
 } from "react-router-dom";
+import {QueryClient, QueryClientProvider} from "react-query";
 import Services from "./pages/services/Services.jsx";
 import Administration from "./pages/administration/Administration.jsx";
 import AppProvider from "./context/AppContext.jsx";
@@ -16,6 +17,10 @@ import Login from "./pages/login/Login.jsx";
 import ValidationTestOne from "./pages/validation/ValidationTestOne.jsx";
 import ValidationTestTwo from "./pages/validation/ValidationTestTwo.jsx";
 import ValidationTestThree from "./pages/validation/ValidationTestThree.jsx";
+import TaskCategories from "./pages/taskCategories/TaskCategories.jsx";
+import {reactQueryConfig} from "./config/config.js";
+
+const queryClient = new QueryClient(reactQueryConfig)
 
 
 // with page wrapper component
@@ -61,6 +66,10 @@ const router = createBrowserRouter([
         element: <ValidationTestThree />,
     },
     {
+        path: "/task-categories",
+        element: <TaskCategories />,
+    },
+    {
         path: "/messages",
         element: <TestOutlet/>,
         children: [
@@ -80,13 +89,15 @@ function App() {
 
 
   return (
-      <UserProvider>
-          <AppProvider>
-              <ModalProvider>
-                <RouterProvider router={router} />
-            </ModalProvider>
-          </AppProvider>
-      </UserProvider>
+      <QueryClientProvider client={queryClient}>
+          <UserProvider>
+              <AppProvider>
+                  <ModalProvider>
+                    <RouterProvider router={router} />
+                </ModalProvider>
+              </AppProvider>
+          </UserProvider>
+      </QueryClientProvider>
 
   )
 }
